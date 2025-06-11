@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ランダム月日ジェネレーター</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    #dateDisplay {
+      font-size: 5em;
+      margin-top: 40px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    button {
+      font-size: 2em;
+      padding: 15px 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ランダム月日ジェネレーター</h1>
+  <button onclick="showRandomDate()">月日を表示</button>
+  <div id="dateDisplay">--月--日</div>
+
+  <script>
+    function showRandomDate() {
+      // 月: 1～12, 日: 1～31
+      const month = Math.floor(Math.random() * 12) + 1;
+      const day = Math.floor(Math.random() * 31) + 1;
+
+      // 月ごとの日数に合わせて修正
+      const daysInMonth = new Date(2024, month, 0).getDate(); // 2024年でうるう年考慮
+      const adjustedDay = Math.min(day, daysInMonth);
+
+      // 表示
+      document.getElementById("dateDisplay").textContent = `${month}月${adjustedDay}日`;
+    }
+  </script>
+
+</body>
+</html>
